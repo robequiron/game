@@ -1,6 +1,17 @@
+
+
+
+
 <div class="card" style="width: 18rem;">
-    
-    
+    <div class="d-flex justify-content-between bg-dark p-1">
+       <div class="text-success"><h3>{{_play.name}}</h3></div>
+       <div><button class="btn btn-danger" (click)="rInicio()">Inicio</button></div>
+    </div>
+    <div class="d-flex justify-content-center" >
+        <h3 class="text-primary">Máxima Puntación: {{_play.max}}</h3>
+    </div>
+
+
     <img src="../../../assets/img/munecafrente.png" class="card-img-top" alt="Título el juego del calamar" *ngIf="!jugar">
     <img src="../../../assets/img/munecaespalda.png" class="card-img-top" alt="Título el juego del calamar" *ngIf="jugar">
     

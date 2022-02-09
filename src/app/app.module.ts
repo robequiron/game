@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PlayComponent } from './pages/play/play.component';
 import { ScoreComponent } from './pages/score/score.component';
+import { PlayService } from './services/play.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ScoreComponent } from './pages/score/score.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PlayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayService } from 'src/app/services/play.service';
 /**
- * Componente inicial de carga
+ * Componente inicial de carga del Juego del Calamar
  */
 @Component({
   selector: 'app-home',
@@ -14,22 +14,31 @@ export class HomeComponent implements OnInit {
   /**
    * Nombre del jugador
    */
-  public name:String='';
+  public name:string='';
+
+  /**
+   * Error en el input name
+   */
+  public eName:boolean= false;
 
   /**
    * Loading de la app
    */
   public load:Boolean = false;
 
-
+  /**
+   * Constructor
+   * 
+   * @param _play Servicios del juego
+   * @param router Servicios de navegación entre vista y manipulación de la url
+   */
   constructor(
     public _play:PlayService,
     public router:Router
-    
     ) { }
 
   /**
-   * Ciclo de vida
+   * Ciclo de vida 
    */
   ngOnInit(): void {
 
@@ -45,8 +54,21 @@ export class HomeComponent implements OnInit {
   */
   public playGame():void{
 
-    this.router.navigate(['play']);
+    try {
+      if(this.name) {
+        this._play.checkName(this.name);
+        this.router.navigate(['play']);
+      } else {
+        this.eName = true;
+        setTimeout(() => {
+          this.eName = false;
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
   }
 
+  
 }

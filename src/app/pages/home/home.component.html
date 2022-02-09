@@ -8,11 +8,18 @@
     
     <div class="card-body " *ngIf="load">
       <h5 class="card-title text-center">Bienvenido</h5>
-      <p class="card-text text-center">Gracias por participar, pon el nombre que aparece en tu tarjeta para participar en el juego.</p>
+      <p class="card-text text-center">Eres afortunado, sabemos que estás hasta el cuello de deudas. Aprovecha esta oportunidad, pon tu nombre y participa.</p>
       <img src="../../../assets/img/tarjeta.png" class="card-img-top" alt="Tarjeta de invitación">
         <!--Input-->
         <div class="d-flex justify-content-center">
-            <input type="text" class="form-control" placeholder="Tú nombre" [(ngModel)]="name" >  
+            <div>
+            <input type="text" class="form-control"
+            [class]="eName ?  'is-invalid' : ''" 
+             placeholder="Tú nombre" [(ngModel)]="name" name="name" >  
+            <div class="invalid-feedback text-center" *ngIf="eName">
+                Sin nombre no puedes participar. ¿No serás de la policía?
+            </div>
+            </div>
         </div>
         <div class="d-flex justify-content-center mt-1">
             <button class="btn btn-danger" (click)="playGame()">Iniciar</button>
