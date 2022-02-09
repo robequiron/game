@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div class="card" style="width: 18rem;">
+    <img src="../../../assets/img/eljuegodelcalamar.png" class="card-img-top" alt="Título el juego del calamar">
+    <div class="d-flex justify-content-center" *ngIf="!load">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+    <div class="card-body " *ngIf="load">
+      <h5 class="card-title text-center">Bienvenido</h5>
+      <p class="card-text text-center">Gracias por participar, pon el nombre que aparece en tu tarjeta para participar en el juego.</p>
+      <img src="../../../assets/img/tarjeta.png" class="card-img-top" alt="Tarjeta de invitación">
+        <!--Input-->
+        <div class="d-flex justify-content-center">
+            <input type="text" class="form-control" placeholder="Tú nombre" [(ngModel)]="name" >  
+        </div>
+        <div class="d-flex justify-content-center mt-1">
+            <button class="btn btn-danger" (click)="playGame()">Iniciar</button>
+        </div>
+    </div>
+</div>
