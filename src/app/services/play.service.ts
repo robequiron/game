@@ -1,7 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 /**
- * Servicios 
+ * Servicios partida
  */
 @Injectable({
   providedIn: 'root'
@@ -27,12 +27,7 @@ export class PlayService {
   constructor() { }
 
 
-  /**
-   * Establecemos los datos para las siguientes partidas
-   */
-  public getGame() {
-
-  }
+ 
 
   /**
    * Establecemos el nombre del jugador
@@ -59,6 +54,10 @@ export class PlayService {
 
   }
 
+  /**
+   * Grabamos los punto en la variable Max y en localStorage
+   * @param n Puntos
+   */
   public setMaxPoint(n:number):void {
     
     this.max = n;

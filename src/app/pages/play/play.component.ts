@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayService } from 'src/app/services/play.service';
-
+/**
+ * Componente donde se realiza el juego
+ */
 @Component({
   selector: 'app-play',
   templateUrl: './play.component.html',
@@ -9,8 +11,14 @@ import { PlayService } from 'src/app/services/play.service';
 })
 export class PlayComponent implements OnInit {
 
+  /**
+   * Varible que contiene el valor último del click de las pisadas.
+   */
   public lastButton:string="";
 
+  /**
+   * Cuando es Falso la muñeca está de frente y pierdes. Verdadero puedes caminar, sin morir.
+   */
   public jugar:boolean= false;
 
   /**
@@ -48,12 +56,21 @@ export class PlayComponent implements OnInit {
   */
   public exit = false;
 
-
+  /**
+   * Constructor
+   * 
+   * @param _play Servicios del juego
+   * @param router Servicios de navegación entre vista y manipulación de la url
+   */
   constructor(
     public _play:PlayService,
     public router: Router
   ) { }
 
+
+  /**
+   * Ciclo de vida
+   */
   ngOnInit(): void {
     //Comprobamos que el usuario ha entrado anteriormente. Si no existe en el localStore no desplazamos a la ruta home
    if (!this._play.localName()) this.router.navigate(['home']);
