@@ -29,4 +29,8 @@ describe('PlayComponent', () => {
   it('Creamos el componente', () => {
     expect(component).toBeTruthy();
   });
+
+  
+
+
 });

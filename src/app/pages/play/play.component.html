@@ -15,7 +15,7 @@
     <img src="../../../assets/img/munecafrente.png" class="card-img-top" alt="Título el juego del calamar" *ngIf="!jugar">
     <img src="../../../assets/img/munecaespalda.png" class="card-img-top" alt="Título el juego del calamar" *ngIf="jugar">
     
-    <div class="card-body " >
+    <div class="card-body" *ngIf="!exit">
       <h5 class="card-title text-center">Puntos obtenidos {{_play.point}}</h5>
         <!--Input-->
         <div class="d-flex justify-content-center" *ngIf="!btnIniciar">

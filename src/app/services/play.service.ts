@@ -92,7 +92,7 @@ export class PlayService {
   public checkName(name:string):void {
     
     if (localStorage.getItem('name')===name) {
-        this.max = Number(localStorage.getItem('max'));
+        this.max = Number(localStorage.getItem('max')) || 0;
     } else {
         this.max = 0;
         this.setName(name);

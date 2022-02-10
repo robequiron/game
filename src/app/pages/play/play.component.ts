@@ -23,10 +23,30 @@ export class PlayComponent implements OnInit {
    */
   public lost:boolean = false;
 
+  /**
+   * Ruta audio iniciar
+   */
+  public audioIniciar = new Audio("../../../assets/audio/iniciar.mp3");
+  /**
+   * Ruta audio jugaremos
+   */
+  public audioJugaremos = new Audio("../../../assets/audio/jugaremos.mp3");
+
+
+  /**
+   * Variable para el intervalo de tiempo
+   */
   public intervalo:any;
 
+  /**
+   * Tiempo del intervalo
+   */
   public time:number = 5000;
 
+  /** 
+   * Variable para salir de la página con tiempo de apagar los intervalos
+  */
+  public exit = false;
 
 
   constructor(
@@ -55,8 +75,8 @@ export class PlayComponent implements OnInit {
     this.lost = false;
 
     //Iniciamos el audio
-    let audio = new Audio("../../../assets/audio/iniciar.mp3");
-    audio.play();
+    
+    this.audioIniciar.play();
 
     setTimeout(() => {
       //La muñeca de espalda
@@ -65,8 +85,7 @@ export class PlayComponent implements OnInit {
       //Inicializamos el intervalor
       this.establecerIntervalor();
       if (this.jugar) {
-        let audio = new Audio("../../../assets/audio/jugaremos.mp3");
-        audio.play();
+        this.audioJugaremos.play();
       }
     }, 4000);  
   }
@@ -119,6 +138,7 @@ export class PlayComponent implements OnInit {
 
       this.lost = true;
       this.btnIniciar = true;
+      this.lastButton = "";
       this._play.setMaxPoint(this._play.point);
       clearInterval(this.intervalo);
     }
@@ -157,15 +177,32 @@ export class PlayComponent implements OnInit {
     
     if (audio) audio.play();
     
-
   }
 
   /**
    * Retornamos a la pagina de inicio
    */
   public rInicio():void{
-    this.router.navigate(['home']);
+    this.exit = true;
+    setTimeout(() => {
+      this.router.navigate(['home']);
+      this.audioIniciar.pause();
+      this.audioJugaremos.pause();
+      //Paramos el intervalor
+      clearInterval(this.intervalo);
+    }, 4500);
   }
   
+  /**
+   * Destruimos el intervalor una vez destruida  el componente
+   */
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+   
+    setTimeout(() => {
+      clearInterval(this.intervalo);
+    }, 4500);
+  }
 
 }
