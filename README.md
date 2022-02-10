@@ -1,8 +1,12 @@
 # Game
+Proyecto generado con Angular versión 13. Realización del juego del semáforo con adaptación del Juego del Calamar. 
+La aplicación está disponible y compilada en /dist, además se puede juegar en la página https://gamebbva.web.app/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
+
 
 ## Development server
+
+Se puede probar en local una vez instalado NodeJs `https://nodejs.org/es/download/`. 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
